@@ -1,0 +1,577 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="description" content="Casa à venda com 3 quartos, suíte, quintal e garagem para 2 carros. Confira todos os detalhes do imóvel.">
+
+    <title>Casa à Venda | Seu Novo Lar</title>
+
+    <style>
+        /* ==============================
+           CONFIGURAÇÕES GERAIS
+        ============================== */
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background-color: #f5f6f8;
+            color: #222;
+            line-height: 1.6;
+        }
+
+        img {
+            max-width: 100%;
+            display: block;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+
+        /* ==============================
+           CABEÇALHO
+        ============================== */
+
+        header {
+            background: linear-gradient(135deg, #1f3a52, #2c3e50);
+            color: white;
+            text-align: center;
+            padding: 55px 20px;
+        }
+
+        header h1 {
+            font-size: 42px;
+            margin-bottom: 10px;
+            letter-spacing: 1px;
+        }
+
+        header p {
+            font-size: 18px;
+            color: #e5e9ed;
+        }
+
+
+        /* ==============================
+           CONTAINER PRINCIPAL
+        ============================== */
+
+        .container {
+            width: 90%;
+            max-width: 1000px;
+            margin: 35px auto;
+            background-color: white;
+            padding: 35px;
+            border-radius: 12px;
+            box-shadow: 0 5px 25px rgba(0, 0, 0, 0.08);
+        }
+
+
+        /* ==============================
+           TÍTULOS
+        ============================== */
+
+        h2 {
+            color: #2c3e50;
+            font-size: 28px;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 3px solid #27ae60;
+        }
+
+        h3 {
+            color: #2c3e50;
+            font-size: 23px;
+            margin-top: 40px;
+            margin-bottom: 18px;
+        }
+
+        h4 {
+            font-size: 24px;
+            color: #2c3e50;
+            margin-bottom: 8px;
+        }
+
+        p {
+            color: #555;
+            font-size: 16px;
+        }
+
+
+        /* ==============================
+           DESTAQUE DO IMÓVEL
+        ============================== */
+
+        .destaque {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 20px;
+            background-color: #f0f7f3;
+            border-left: 5px solid #27ae60;
+            padding: 20px;
+            margin: 25px 0;
+            border-radius: 8px;
+        }
+
+        .destaque-texto strong {
+            display: block;
+            color: #2c3e50;
+            font-size: 20px;
+            margin-bottom: 4px;
+        }
+
+        .preco {
+            color: #27ae60;
+            font-size: 28px;
+            font-weight: bold;
+            white-space: nowrap;
+        }
+
+
+        /* ==============================
+           GALERIA DE FOTOS
+        ============================== */
+
+        .galeria {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 18px;
+        }
+
+        figure {
+            margin: 0;
+            background-color: #fff;
+            border-radius: 10px;
+            overflow: hidden;
+            border: 1px solid #e5e5e5;
+            box-shadow: 0 3px 12px rgba(0, 0, 0, 0.07);
+            transition: 0.3s;
+        }
+
+        figure:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+        }
+
+        figure img {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+        }
+
+        figcaption {
+            padding: 12px;
+            text-align: center;
+            font-size: 14px;
+            color: #555;
+            font-style: normal;
+        }
+
+
+        /* ==============================
+           CARACTERÍSTICAS
+        ============================== */
+
+        .caracteristicas {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+            list-style: none;
+        }
+
+        .caracteristicas li {
+            background-color: #f7f8f9;
+            padding: 15px;
+            border-radius: 8px;
+            border: 1px solid #e5e5e5;
+            color: #444;
+            transition: 0.2s;
+        }
+
+        .caracteristicas li:hover {
+            background-color: #eef7f1;
+            border-color: #27ae60;
+        }
+
+        .caracteristicas li::before {
+            content: "✓";
+            color: #27ae60;
+            font-weight: bold;
+            margin-right: 10px;
+        }
+
+
+        /* ==============================
+           TABELA
+        ============================== */
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+            overflow: hidden;
+            border-radius: 8px;
+        }
+
+        table,
+        th,
+        td {
+            border: 1px solid #ddd;
+        }
+
+        th,
+        td {
+            padding: 14px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #2c3e50;
+            color: white;
+            font-weight: bold;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f7f7f7;
+        }
+
+        tr:hover {
+            background-color: #eef7f1;
+        }
+
+
+        /* ==============================
+           CONTATO
+        ============================== */
+
+        .contato {
+            margin-top: 40px;
+            background: linear-gradient(135deg, #eef7f1, #f5faf7);
+            padding: 30px;
+            border-radius: 12px;
+            text-align: center;
+            border: 1px solid #dcefe3;
+        }
+
+        .contato p {
+            margin-bottom: 15px;
+        }
+
+        .botao {
+            display: inline-block;
+            background-color: #27ae60;
+            color: white;
+            padding: 13px 28px;
+            border-radius: 7px;
+            font-weight: bold;
+            font-size: 16px;
+            transition: 0.3s;
+            box-shadow: 0 4px 10px rgba(39, 174, 96, 0.25);
+        }
+
+        .botao:hover {
+            background-color: #1e8449;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 14px rgba(39, 174, 96, 0.35);
+        }
+
+
+        /* ==============================
+           RODAPÉ
+        ============================== */
+
+        footer {
+            text-align: center;
+            padding: 25px 15px;
+            color: #777;
+            font-size: 14px;
+        }
+
+
+        /* ==============================
+           RESPONSIVIDADE
+        ============================== */
+
+        @media (max-width: 750px) {
+
+            header {
+                padding: 40px 20px;
+            }
+
+            header h1 {
+                font-size: 32px;
+            }
+
+            .container {
+                width: 94%;
+                padding: 25px 20px;
+            }
+
+            .galeria {
+                grid-template-columns: 1fr;
+            }
+
+            .galeria figure img {
+                height: 250px;
+            }
+
+            .caracteristicas {
+                grid-template-columns: 1fr;
+            }
+
+            .destaque {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .preco {
+                font-size: 24px;
+            }
+
+            table {
+                font-size: 14px;
+            }
+
+            th,
+            td {
+                padding: 10px;
+            }
+        }
+
+
+        @media (max-width: 450px) {
+
+            header h1 {
+                font-size: 27px;
+            }
+
+            header p {
+                font-size: 15px;
+            }
+
+            .container {
+                margin: 20px auto;
+                padding: 20px 15px;
+            }
+
+            h2 {
+                font-size: 24px;
+            }
+
+            h3 {
+                font-size: 21px;
+            }
+
+            .galeria figure img {
+                height: 210px;
+            }
+
+            .contato {
+                padding: 25px 15px;
+            }
+
+            .botao {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+
+
+<body>
+
+    <!-- CABEÇALHO -->
+
+    <header>
+        <h1>Casa à Venda</h1>
+        <p>Seu próximo lar pode estar aqui</p>
+    </header>
+
+
+    <!-- CONTEÚDO PRINCIPAL -->
+
+    <main class="container">
+
+        <!-- SOBRE O IMÓVEL -->
+
+        <section>
+
+            <h2>Sobre o Imóvel</h2>
+
+            <p>
+                Excelente casa localizada em um bairro tranquilo, próxima a
+                mercados, escolas e transporte público. Um imóvel ideal para
+                famílias que buscam conforto, segurança e espaço para viver bem.
+            </p>
+
+        </section>
+
+
+        <!-- DESTAQUE -->
+
+        <div class="destaque">
+
+            <div class="destaque-texto">
+                <strong>Casa completa para sua família</strong>
+                <span>3 quartos • 2 banheiros • 2 vagas</span>
+            </div>
+
+            <div class="preco">
+                R$ 450.000
+            </div>
+
+        </div>
+
+
+        <!-- FOTOS -->
+
+        <section>
+
+            <h3>Fotos do Imóvel</h3>
+
+            <div class="galeria">
+
+                <figure>
+                    <img src="Casas/casa1.jpg" alt="Fachada da casa">
+                    <figcaption>Fachada da casa</figcaption>
+                </figure>
+
+                <figure>
+                    <img src="Casas/casa3.jpg" alt="Sala de estar ampla">
+                    <figcaption>Sala de estar ampla e iluminada</figcaption>
+                </figure>
+
+                <figure>
+                    <img src="Casas/casa4.jpg" alt="Cozinha planejada">
+                    <figcaption>Cozinha planejada</figcaption>
+                </figure>
+
+            </div>
+
+        </section>
+
+
+        <!-- CARACTERÍSTICAS -->
+
+        <section>
+
+            <h3>Características do Imóvel</h3>
+
+            <ul class="caracteristicas">
+
+                <li>3 quartos, sendo 1 suíte</li>
+
+                <li>2 banheiros</li>
+
+                <li>Sala ampla e confortável</li>
+
+                <li>Cozinha planejada</li>
+
+                <li>Quintal com espaço para churrasqueira</li>
+
+                <li>Garagem para 2 carros</li>
+
+            </ul>
+
+        </section>
+
+
+        <!-- DETALHES -->
+
+        <section>
+
+            <h3>Detalhes Técnicos</h3>
+
+            <table>
+
+                <tr>
+                    <th>Item</th>
+                    <th>Informação</th>
+                </tr>
+
+                <tr>
+                    <td>Área construída</td>
+                    <td>150 m²</td>
+                </tr>
+
+                <tr>
+                    <td>Área do terreno</td>
+                    <td>250 m²</td>
+                </tr>
+
+                <tr>
+                    <td>Quartos</td>
+                    <td>3</td>
+                </tr>
+
+                <tr>
+                    <td>Suítes</td>
+                    <td>1</td>
+                </tr>
+
+                <tr>
+                    <td>Banheiros</td>
+                    <td>2</td>
+                </tr>
+
+                <tr>
+                    <td>Garagem</td>
+                    <td>2 carros</td>
+                </tr>
+
+                <tr>
+                    <td>Valor</td>
+                    <td><strong>R$ 450.000</strong></td>
+                </tr>
+
+            </table>
+
+        </section>
+
+
+        <!-- CONTATO -->
+
+        <section class="contato">
+
+            <h4>Gostou do imóvel?</h4>
+
+            <p>
+                Entre em contato para tirar suas dúvidas ou agendar uma visita.
+            </p>
+
+            <a
+                class="botao"
+                href="https://wa.me/5500000000000"
+                target="_blank"
+                rel="noopener noreferrer"
+            >
+                Falar no WhatsApp
+            </a>
+
+        </section>
+
+    </main>
+
+
+    <!-- RODAPÉ -->
+
+    <footer>
+        <p>&copy; 2026 - Casa à Venda. Todos os direitos reservados.</p>
+    </footer>
+
+</body>
+
+</html>
